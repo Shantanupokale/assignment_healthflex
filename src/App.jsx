@@ -5,17 +5,25 @@ import Home from "./pages/Home";
 import CreateTimer from "./pages/CreateTimer";
 import History from "./pages/History";
 import { ThemeProvider } from "./context/ThemeContext";
+import MobileNavbar from "./components/MobileNavbar";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
       <ThemeProvider>
         <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/create" element={<CreateTimer />} />
-            <Route path="/history" element={<History />} />
-          </Routes>
+          <div className="min-h-screen bg-gradient-to-b from-white/80 from-slate-50  to-indigo-500 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 text-foreground ">
+            <MobileNavbar />
+            <Toaster position="top-center" reverseOrder={false} />
+            <main className=" min-h-screen  p-12 border-2 border-red-800">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/create" element={<CreateTimer />} />
+                <Route path="/history" element={<History />} />
+              </Routes>
+            </main>
+          </div>
         </Router>
       </ThemeProvider>
     </>

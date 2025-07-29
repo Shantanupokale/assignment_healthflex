@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Home, Plus, History } from "lucide-react";
+import ThemeSwitcher from "@/components/ThemeSwitcher"; 
 
 export default function MobileNavbar() {
   const location = useLocation();
@@ -13,8 +14,7 @@ export default function MobileNavbar() {
   ];
 
   return (
-  <nav className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 bg-white dark:bg-slate-900 rounded-full shadow-xl px-4 py-2 flex justify-around items-center gap-2 w-fit min-w-[250px] md:w-[300px] lg:w-[360px] max-w-[90%]">
-
+    <nav className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 bg-white dark:bg-slate-900 rounded-full shadow-xl px-4 py-2 flex justify-around items-center gap-2 w-fit min-w-[250px] md:w-[300px] lg:w-[360px] max-w-[90%]">
       {navItems.map(({ path, icon: Icon }) => {
         const isActive = location.pathname === path;
 
@@ -32,6 +32,11 @@ export default function MobileNavbar() {
           </button>
         );
       })}
+
+      {/* ✅ Theme Toggle Button */}
+      <div className="px-2 py-1">
+        <ThemeSwitcher />
+      </div>
     </nav>
   );
 }
